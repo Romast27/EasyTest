@@ -1,0 +1,4 @@
+CREATE TABLE IF NOT EXISTS temp_result_table AS SELECT id_test, id_student, id_question FROM Tests, Students, Questions WHERE id_test = NULL AND id_student = NULL AND id_question = NULL;
+CREATE TABLE IF NOT EXISTS temp_all_variant AS SELECT id_student, id_question FROM Students, Questions WHERE id_student = NULL AND id_question = NULL;
+DELETE FROM temp_all_variant;
+INSERT INTO temp_all_variant(id_student, id_question) SELECT Students.id_student, Questions.id_question FROM Students INNER JOIN Students_class ON Students.id_student = Students_class.id_student AND Students_class.id_class = {0}, Questions WHERE Questions.theme = {1};

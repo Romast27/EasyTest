@@ -1,0 +1,1 @@
+SELECT DISTINCT Test_info.id_test, date_of_creature, starting_date, ending_date, CASE WHEN type_work = 1 THEN ('Тест по теме «' || theme || '»') WHEN type_work = 2 THEN ('Контрольная работа №' || num_work) END FROM Tests LEFT JOIN Test_info ON Tests.id_test = Test_info.id_test
